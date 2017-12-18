@@ -14,19 +14,11 @@ admin.initializeApp({
 
 exports.getCustomer = function getCustomer(req, res) {
 
-  console.log('deployment')
-  console.log(deployment)
-  console.log('deployment')
-  console.log('environment')
-  console.log(environment)
-  console.log('environment')
-
   req.key = stripeKey
   req.deployment = deployment
 
   return runtimeVariable.get(req)
   .then(registerStripe)
-  .then(registerFirebase)
   .then(verifyIdToken)
   .then(getCustomerId)
   .then(getCustomerData)
