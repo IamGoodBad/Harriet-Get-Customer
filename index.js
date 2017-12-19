@@ -41,7 +41,7 @@ var registerStripe = function(request) {
 
 var verifyIdToken = function(request) {
   return admin.auth()
-  .verifyIdToken(request.headers.Authorization)
+  .verifyIdToken(request.headers.authorization)
   .then(function(decodedToken) {
     request.body['decodedToken'] = decodedToken
     return Promise.resolve(request)
