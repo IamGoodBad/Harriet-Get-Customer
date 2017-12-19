@@ -17,7 +17,7 @@ exports.getCustomer = function getCustomer(req, res) {
   req.key = stripeKey
   req.deployment = deployment
 
-  return runtimeVariable.get(req)
+  runtimeVariable.get(req)
   .then(registerStripe)
   .then(verifyIdToken)
   .then(getCustomerId)
@@ -27,8 +27,8 @@ exports.getCustomer = function getCustomer(req, res) {
     res.status(200).json(request.body.customer)
   })
   .catch(function(error) {
-    req.error = error
-    admin.database().ref('errors').push().set(req)
+    req.body.error = error
+    admin.database().ref('errors').push().set(req.body)
     console.error(error)
     res.status(500).send(error)
   })
