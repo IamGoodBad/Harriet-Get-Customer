@@ -27,8 +27,6 @@ exports.getCustomer = function getCustomer(req, res) {
     res.status(200).json(request.body.customer)
   })
   .catch(function(error) {
-    req.body.error = error
-    admin.database().ref('errors').push().set(req.body)
     console.error(error)
     res.status(500).send(error)
   })
