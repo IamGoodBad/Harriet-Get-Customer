@@ -1,3 +1,4 @@
+// written by me.
 const admin = require('firebase-admin')
 const datastore = require('@google-cloud/datastore')()
 const runtimeVariable = require('./getVariable.js')
